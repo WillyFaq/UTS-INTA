@@ -72,7 +72,7 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         Admin
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -86,8 +86,8 @@
                             <a href="<?= base_url("user/logout"); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
+                </li> -->
                     <!-- /.dropdown-user -->
-                </li>
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
@@ -103,6 +103,12 @@
                         </li>
                         <li>
                             <a href="<?= base_url("index.php/Source_satu"); ?>"><i class="fa fa-gears fa-fw"></i> Source 1</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url("index.php/Source_dua"); ?>"><i class="fa fa-gears fa-fw"></i> Source 2</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url("index.php/Mediated_schema"); ?>"><i class="fa fa-database fa-fw"></i> Mediated Schema</a>
                         </li>
                     </ul>
                 </div>

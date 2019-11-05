@@ -83,6 +83,8 @@
 <br>        
 <pre>
 <?php
+print_r($json);
+echo '<br><hr>';
     foreach ($json as $a => $b) {
         echo "$a -> ".sizeof($b)." data <br>";
     }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Source_satu extends CI_Controller {
+class Source_dua extends CI_Controller {
 
 
 	var $json = [];
@@ -17,10 +17,10 @@ class Source_satu extends CI_Controller {
 	{
 		$data = array(
 						'page'		=> 'source_view',
-						'tittle'	=> 'Source 1 : Twitter',
+						'tittle'	=> 'Source 2 : seluar.id',
 						'json'		=> $this->json,
 						'attr'		=> $this->gen_atribute(),
-						'form'		=> 'Source_satu'
+						'form'		=> 'Source_dua'
 						);
 		$this->load->view('index', $data);
 	}
@@ -34,12 +34,12 @@ class Source_satu extends CI_Controller {
 		array_push($attr, 'Aksi');
 		$data = array(
 				'page'		=> 'source_view',
-				'tittle'	=> 'Source 1 : Twitter',
+				'tittle'	=> 'Source 2 : seluar.id',
 				'json'		=> $this->json,
 				'attr'		=> $this->gen_atribute(),
 				'attr_sel'	=> $attr,
 				'table'		=> $this->gen_table($attr),
-						'form'		=> 'Source_satu'
+						'form'		=> 'Source_dua'
 				);
 
 		$this->load->view('index', $data);
@@ -49,7 +49,7 @@ class Source_satu extends CI_Controller {
 	public function gen_atribute()
 	{
 		$ret = "";
-		$attr = ['user', 'created_at', 'text'];
+		$attr = ['DatePost', 'Author', 'Title', 'Content', 'Tags'];
 		foreach ($attr as $key => $value) {
 			$ret .= '<div class="form-group">';
                 $ret .= '<label for="'.$value.'" class="col-sm-4 control-label">'.$value.'</label>';
@@ -104,11 +104,11 @@ class Source_satu extends CI_Controller {
 	public function get_data()
 	{
 		$data = array(
-						'xiaomi' 	=> json_decode(file_get_contents("./assets/json/tweet_xiaomi.json")),
-						'asus' 		=> json_decode(file_get_contents("./assets/json/tweet_asus.json")),
-						'oppo' 		=> json_decode(file_get_contents("./assets/json/tweet_oppo.json")),
-						'samsung' 	=> json_decode(file_get_contents("./assets/json/tweet_samsung.json")),
-						'vivo' 		=> json_decode(file_get_contents("./assets/json/tweet_vivo.json")),
+						'xiaomi' 	=> json_decode(file_get_contents("./assets/json/selular.id-xiaomi.json")),
+						'asus' 		=> json_decode(file_get_contents("./assets/json/selular.id-asus.json")),
+						'oppo' 		=> json_decode(file_get_contents("./assets/json/selular.id-oppo.json")),
+						'samsung' 	=> json_decode(file_get_contents("./assets/json/selular.id-samsung.json")),
+						'vivo' 		=> json_decode(file_get_contents("./assets/json/selular.id-vivo.json")),
 						);
 		return $data;
 	}
@@ -170,14 +170,14 @@ class Source_satu extends CI_Controller {
 		array_push($sel_attribut, 'Aksi');
 		$data = array(
 				'page'		=> 'source_view',
-				'tittle'	=> 'Source 1 : Twitter',
+				'tittle'	=> 'Source 2 : seluar.id',
 				'json'		=> $this->json,
 				'attr'		=> $this->gen_atribute(),
 				'attr_sel'	=> $sel_attribut,
 				'table'		=> $this->gen_table($sel_attribut),
 				'idata'		=> $idata,
 				'hasil'		=> $this->gen_table_hasil($hasil_attr, $row),
-				'form'		=> 'Source_satu'
+						'form'		=> 'Source_dua'
 				);
 
 		$this->load->view('index', $data);
