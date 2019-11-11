@@ -12,12 +12,22 @@
             </div>
             <div class="panel-body">
                 <?= form_open($form.'/show_data', array("class" => "form-horizontal"));?>
-                    <?= isset($attr)?$attr:'';?>
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-2">
-                            <button type="submit" class="btn btn-success" style="width:100%; ">Ambil Data</button>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-6 text-center">
+                        <h4>Attribut Source 1 : twitter</h4>
+                        <hr>
+                        <?= isset($attr)?$attr['twiiter']:'';?>
                     </div>
+                    <div class="col-xs-6 text-center">
+                        <h4>Attribut Source 2 : selular.id</h4>
+                        <hr>
+                        <?= isset($attr)?$attr['selular']:'';?>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <hr>
+                        <button type="submit" class="btn btn-success" >Ambil Data</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>
@@ -42,34 +52,8 @@
             }    
         }
         ?>
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">Aksi</h3>
-            </div>
-            <div class="panel-body">
-                <input type="submit" class="btn btn-default" name="tokenizing" value="Tokenizing">
-                <input type="submit" class="btn btn-primary" name="case_folding" value="Case Folding">
-                <input type="submit" class="btn btn-warning" name="hapus_tanda_baca" value="Hapus Tanda Baca">
-                <input type="submit" class="btn btn-warning" name="hapus_emoticon" value="Hapus Emoticon">
-                <input type="submit" class="btn btn-warning" name="hapus_kata_tanya" value="Hapus Kata Tanya">
-                <input type="submit" class="btn btn-danger"  name="stopword_removed" value="Stopword Removed">
-                <input type="submit" class="btn btn-success" name="stemming" value="Stemming">
-            </div>
-        </div>
+        
         </form>
-        <?php endif; ?>
-        
-        
-        
-        <?php if(isset($hasil)): ?>
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h3 class="panel-title">Hasil</h3>
-            </div>
-            <div class="panel-body">
-                <?= $hasil; ?>
-            </div>
-        </div>
         <?php endif; ?>
 
 
@@ -81,16 +65,6 @@
 <br>        
 <hr>        
 <br>        
-<pre>
-<?php
-print_r($json);
-echo '<br><hr>';
-    foreach ($json as $a => $b) {
-        echo "$a -> ".sizeof($b)." data <br>";
-    }
-
-?>
-</pre>
 
 
 <script type="text/javascript">
@@ -123,6 +97,7 @@ echo '<br><hr>';
             return false;
 
         });
+
 
         <?php
 

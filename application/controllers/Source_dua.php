@@ -39,7 +39,7 @@ class Source_dua extends CI_Controller {
 				'attr'		=> $this->gen_atribute(),
 				'attr_sel'	=> $attr,
 				'table'		=> $this->gen_table($attr),
-						'form'		=> 'Source_dua'
+				'form'		=> 'Source_dua'
 				);
 
 		$this->load->view('index', $data);
@@ -49,7 +49,7 @@ class Source_dua extends CI_Controller {
 	public function gen_atribute()
 	{
 		$ret = "";
-		$attr = ['DatePost', 'Author', 'Title', 'Content', 'Tags'];
+		$attr = ['merk', 'DatePost', 'Author', 'Content'];
 		foreach ($attr as $key => $value) {
 			$ret .= '<div class="form-group">';
                 $ret .= '<label for="'.$value.'" class="col-sm-4 control-label">'.$value.'</label>';
@@ -89,6 +89,8 @@ class Source_dua extends CI_Controller {
 						$dd['Content'] = '<p class="review-txt" id="rev-'.$key.'_'.$k.'">';
                         $dd['Content'] .= $v->$b;
                         $dd['Content'] .= '</p><a href="#" class="read_more" data-view="0" data-id="'.$key.'_'.$k.'">Read More</a>';
+					}else if($b=='merk'){
+						$dd['merk'] = $key;
 					}else{
 						$dd[$b] = $v->$b;
 					}
@@ -110,7 +112,13 @@ class Source_dua extends CI_Controller {
 						'samsung' 	=> json_decode(file_get_contents("./assets/json/selular.id-samsung.json")),
 						'vivo' 		=> json_decode(file_get_contents("./assets/json/selular.id-vivo.json")),
 						);
-		return $data;
+		$ret = [];
+		foreach ($data as $k => $v) {
+			for($i=0; $i<16; $i++){
+				$ret[$k][$i] = $v[$i];
+			}
+		}
+		return $ret;
 	}
 
 
@@ -124,13 +132,20 @@ class Source_dua extends CI_Controller {
 		}
 		$pdata = [];
 		$idata = [];
-		foreach ($this->input->post('data') as $key => $value) {
-			array_push($idata, $value);
-			$a = explode("_", $value);
-			$merk = $a[0];
-			$i = $a[1];
-			foreach ($sel_attribut as $c => $d) {
-				$pdata[$key][$d] = $this->json[$merk][$i]->$d;
+		if($this->input->post('data')){
+			foreach ($this->input->post('data') as $key => $value) {
+				array_push($idata, $value);
+				$a = explode("_", $value);
+				$merk = $a[0];
+				$i = $a[1];
+				foreach ($sel_attribut as $c => $d) {
+					//$pdata[$key][$d] = $this->json[$merk][$i]->$d;
+					if($d=='merk'){
+						$pdata[$key][$d] = $merk;
+					}else{
+						$pdata[$key][$d] = $this->json[$merk][$i]->$d;
+					}
+				}
 			}
 		}
 		$row = [];

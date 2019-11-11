@@ -80,15 +80,7 @@
         
 <br>        
 <hr>        
-<br>        
-<pre>
-<?php
-    foreach ($json as $a => $b) {
-        echo "$a -> ".sizeof($b)." data <br>";
-    }
-
-?>
-</pre>
+<br>  
 
 
 <script type="text/javascript">
